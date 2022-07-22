@@ -1,0 +1,54 @@
+<clickhouse>
+	<listen_host>0.0.0.0</listen_host>
+	<listen_host>localhost</listen_host>
+
+	<global_config>uncompressed_cache_size,remote_servers.shard_0.shard[0]</global_config>
+	<logger>
+		<level>trace</level>
+		<log>/root/chdata/log/clickhouse-server/clickhouse-server.log</log>
+		<size>100M</size>
+	</logger>
+
+	<uncompressed_cache_size>8589934592</uncompressed_cache_size>
+	<mark_cache_size>5368709120</mark_cache_size>
+	<mlock_executable>true</mlock_executable>
+
+	<remote_servers>
+		<shard_0>
+			<shard c1="5">
+				<replica>
+					<host a1="1" a2="2">clickhouse-env-dev-ch</host>
+					<port>9000</port>
+				</replica>
+				<replica>
+					<host a3="3" a4="4">clickhouse-env-dev-ch2</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+			<shard>
+				<replica>
+					<host b1="1" b2="2">clickhouse-env-runner-0.clickhouse-env-runner</host>
+					<port>9000</port>
+				</replica>
+				<replica>
+					<host b3="3" b4="4">clickhouse-env-runner-0.clickhouse-env-runner2</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+		</shard_0>
+		<shard_1>
+			<shard>
+				<replica>
+					<host>clickhouse-env-runner-0.clickhouse-env-runner</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+			<shard>
+				<replica>
+					<host>clickhouse-env-runner-1.clickhouse-env-runner</host>
+					<port>9000</port>
+				</replica>
+			</shard>
+		</shard_1>
+	</remote_servers>
+</clickhouse>
